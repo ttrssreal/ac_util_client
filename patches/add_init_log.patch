@@ -1,0 +1,22 @@
+diff --git a/source/src/main.cpp b/source/src/main.cpp
+index e3d42881c..af2a9c28f 100644
+--- a/source/src/main.cpp
++++ b/source/src/main.cpp
+@@ -1,6 +1,7 @@
+ // main.cpp: initialisation & main loop
+ 
+ #include "cube.h"
++#include "util_client.h"
+ 
+ void cleanup(char *msg)         // single program exit point;
+ {
+@@ -1358,6 +1359,9 @@ int main(int argc, char **argv)
+ 
+     initserver(dedicated);  // never returns if dedicated
+ 
++    initlog("util_client (" UTIL_CLIENT_VERSION ")");
++    util_client::init();
++
+     initlog("world (" STRINGIFY(AC_VERSION) ")");
+     empty_world(7, true);
+ 

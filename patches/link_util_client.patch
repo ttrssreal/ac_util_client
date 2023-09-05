@@ -1,0 +1,26 @@
+diff --git a/source/src/Makefile b/source/src/Makefile
+index bf061958e..00475de4b 100644
+--- a/source/src/Makefile
++++ b/source/src/Makefile
+@@ -44,7 +44,11 @@ else
+ 	endif
+ endif
+ 
+-INCLUDES= -I. -Ibot -I../enet/include
++UTIL_CLIENT_ROOT=../../..
++UTIL_CLIENT_INCLUDES= -I$(UTIL_CLIENT_ROOT)/src/include
++UTIL_CLIENT_LIBS= -L$(UTIL_CLIENT_ROOT)/lib
++
++INCLUDES= -I. -Ibot -I../enet/include $(UTIL_CLIENT_INCLUDES)
+ 
+ STRIP=
+ ifeq (,$(findstring -g,$(CXXFLAGS)))
+@@ -61,7 +65,7 @@ CLIENT_LIBS= -mwindows -L../lib -lSDL2 -lSDL2_image -lzdll -lopengl32 -lenet -lO
+ else
+ USRLIB=$(shell if [ -e /usr/lib64 ]; then echo "/usr/lib64"; else echo "/usr/lib"; fi)
+ CLIENT_INCLUDES= $(INCLUDES) -I/usr/include `sdl2-config --cflags` -idirafter ../include
+-CLIENT_LIBS= -L../enet/.libs -lenet -L$(USRLIB) -lX11 `sdl2-config --libs` -lSDL2_image -lz -lGL -lopenal -lvorbisfile
++CLIENT_LIBS= -L../enet/.libs -lenet -L$(USRLIB) -lX11 `sdl2-config --libs` -lSDL2_image -lz -lGL -lopenal -lvorbisfile $(UTIL_CLIENT_LIBS) -lutil_client
+ endif
+ 
+ CLIENT_OBJS= \
