@@ -13,7 +13,7 @@ ac_src: AC
 	@echo "applying patches"
 	./apply_patches.sh
 
-build_client: client_src
+build_client: client_src AC
 	@echo "Building Util Client"
 	@make -C src/
 
@@ -23,6 +23,10 @@ build_ac: ac_src
 
 build: build_client build_ac
 	@echo "- Task Building"
+
+run: build
+	@echo "- Task Running"
+	@cd AC/ && ./source/src/ac_client
 
 clean: client_src ac_src
 	@echo "- Task Cleaning"
