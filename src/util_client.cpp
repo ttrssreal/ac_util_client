@@ -6,7 +6,9 @@ namespace util_client {
 		printf("Util-Client: Starting Up...\n");
 	}
 
-	void c2sinfo(playerent* d) {
-		printf("(%.2f, %.2f, %.2f)\n", d->o.x, d->o.y, d->o.z);
+	void c2sinfo(playerent* d) {}
+
+	void attackphysics_recoil_spread(float* recoil, int* spread) {
+		*recoil = 3.0f;
 	}
 }

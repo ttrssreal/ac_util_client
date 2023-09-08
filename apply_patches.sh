@@ -3,6 +3,7 @@ patches=(
 	link_util_client.patch
 	add_init_log.patch
 	hook_c2sinfo.patch
+	hook_atk_phy_recoil_spread.patch
 )
 
 for patch in "${patches[@]}"; do

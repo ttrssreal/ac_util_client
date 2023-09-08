@@ -1,0 +1,21 @@
+diff --git a/source/src/weapon.cpp b/source/src/weapon.cpp
+index 5ab792496..31a986e4b 100644
+--- a/source/src/weapon.cpp
++++ b/source/src/weapon.cpp
+@@ -3,6 +3,7 @@
+ #include "cube.h"
+ #include "bot/bot.h"
+ #include "hudgun.h"
++#include "util_client.h"
+ 
+ VARP(autoreload, 0, 1, 1);
+ VARP(akimboautoswitch, 0, 1, 1);
+@@ -1018,6 +1019,8 @@ void weapon::attackphysics(vec &from, vec &to) // physical fx to the owner
+     int spread = dynspread();
+     float recoil = dynrecoil()*-0.01f;
+ 
++    util_client::attackphysics_recoil_spread(&recoil, &spread);
++
+     // spread
+     if(spread>1)
+     {
