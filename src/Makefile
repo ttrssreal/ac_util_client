@@ -1,4 +1,4 @@
-FLAGS        = -Iinclude
+FLAGS        = -Iinclude -I../AC/source/src -I../AC/source/enet/include `sdl2-config --cflags`
 CFLAGS       = -fPIC -Wall
 
 TARGET       = libutil_client.a

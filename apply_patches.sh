@@ -2,6 +2,7 @@
 patches=(
 	link_util_client.patch
 	add_init_log.patch
+	hook_c2sinfo.patch
 )
 
 for patch in "${patches[@]}"; do

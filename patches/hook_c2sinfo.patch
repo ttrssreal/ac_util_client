@@ -1,0 +1,20 @@
+diff --git a/source/src/client.cpp b/source/src/client.cpp
+index 248d2b79d..fe299f975 100644
+--- a/source/src/client.cpp
++++ b/source/src/client.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include "cube.h"
+ #include "bot/bot.h"
++#include "util_client.h"
+ 
+ VAR(connected, 1, 0, 0);
+ 
+@@ -388,6 +389,7 @@ bool sv_pos = true;
+ 
+ void c2sinfo(playerent *d)                  // send update to the server
+ {
++    util_client::c2sinfo(d);
+     if(d->clientnum<0) return;              // we haven't had a welcome message from the server yet
+     if(totalmillis-lastupdate<40) return;    // don't update faster than 25fps
+ 
